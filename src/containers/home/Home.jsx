@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
 class Index extends Component {
   componentWillUnmount() {
-    alert(222);
+    alert(222)
   }
   render() {
-    return <>首页</>;
+    return <>首页</>
   }
 }
 
-export default Index;
+export default Index
