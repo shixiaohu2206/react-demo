@@ -4,13 +4,16 @@ import * as serviceWorker from './serviceWorker'
 import './index.css'
 import App from './App'
 import { Provider } from 'react-redux'
-import ReduxPromise from 'redux-promise'
+import reduxPromise from 'redux-promise'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { createStore, applyMiddleware } from 'redux'
 import reducers from './reducers/index'
 
-let store = createStore(reducers, applyMiddleware(ReduxPromise))
-
-console.log(store.getState())
+const store = createStore(
+  reducers,
+  // 安装redux-devtools-extension的可视化
+  composeWithDevTools(applyMiddleware(reduxPromise))
+)
 
 ReactDOM.render(
   <Provider store={store}>

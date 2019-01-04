@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import actions from '../../actions/index'
 
 class List extends Component {
   increaseNuma = () => {
-    this.props.dispatch(actions.increaseNum(this.props.a_num + 1))
+    this.props.increaseNum(this.props.a_num + 1)
   }
 
   subtraction_2 = () => {
@@ -29,13 +30,14 @@ function mapStateToProps(state) {
   return { a_num: state.a.num, b_num: state.b.num }
 }
 
-// 当前组件的actions映射到全局中
+// actions映射到全局中
 function mapDispatchToProps(dispatch) {
-  return {
-    subtraction2: () => dispatch(actions.subtraction2()),
-    // 默认返回，否则this.props中就无法调用dispatch
+  return bindActionCreators(
+    {
+      ...actions
+    },
     dispatch
-  }
+  )
 }
 
 export default connect(
